@@ -1,0 +1,158 @@
+#a{
+    background-image: url(characterSmall.png);
+    position:absolute;
+    
+}
+
+.enemy{
+    background-color:red;
+    position:absolute;
+    -webkit-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	border-radius: 10px;
+	border: solid 2px red;
+	-webkit-animation:fireball 1s infinite;
+    
+}
+
+.wall{
+    background-color:black;
+    position:absolute;
+    background-image:url('wallTitle.jpg');
+	background-repeat: repeat;
+    -webkit-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
+	
+    
+}
+
+.door{
+    background-color:green;
+    position:absolute;
+
+}
+.open {
+    display: none;
+}
+
+.arch{
+    background-color:black;
+    position:absolute;
+    background-image:url('wallTitle.jpg');
+	background-repeat: repeat;
+    -webkit-box-shadow: -3px 0px 5px 0px rgba(9,71,22,1);
+	-moz-box-shadow: -3px 0px 5px 0px rgba(9,71,22,1);
+	box-shadow: -3px 0px 5px 0px rgba(9,71,22,1);
+	width:10px; 
+	height:30px;
+	top:110px;
+	left:120px;
+}
+
+.dungeon{
+	width: 600px;
+	height: 600px;
+	background-image:url('floorTitle.jpg');
+	background-repeat: repeat;
+	
+}
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.gameOver{
+	position: absolute;
+	z-index: 10;
+	width:610px;
+	padding-top:300px;
+	padding-bottom:250px;
+	font-weight: bold;
+	font-size: 3em;
+	color: red;
+	background-color: black;
+	text-align: center;
+	top:0px;
+}
+
+.play, .pause{
+	float: left;
+	padding: 10px;
+	margin-left: 10px;
+	color:red;
+	background-color: white;
+	cursor: pointer;
+}
+
+.key{
+    position: absolute;
+    background-image:url('Key_sprite.png');
+}
+
+.play:hover, .pause:hover{
+	color:blue;
+}
+.heartContainer{
+	position: absolute;
+	left:650px;
+}
+
+.heart{
+	position:relative;
+	float:left; 
+     width:80px; 
+     height:60px;
+     margin-top:10px; /* leave some space above */
+}
+.heart:before{
+	position: absolute; 
+    content: ""; 
+    left: 31px; 
+    top: 0; 
+    width: 32px; 
+    height: 48px; 
+    background: red; /* assign a nice red color */
+    border-radius: 50px 50px 0 0; /* make the top edge round */ 
+    -webkit-transform: rotate(-45deg); /* 45 degrees rotation counter clockwise */
+       -moz-transform: rotate(-45deg); 
+        -ms-transform: rotate(-45deg); 
+         -o-transform: rotate(-45deg); 
+            transform: rotate(-45deg); 
+    -webkit-transform-origin: 0 100%; /* Rotate it around the bottom-left corner */
+       -moz-transform-origin: 0 100%; 
+        -ms-transform-origin: 0 100%; 
+         -o-transform-origin: 0 100%; 
+            transform-origin: 0 100%;
+}
+.heart:after{
+	position: absolute; 
+    content: ""; 
+    top: 0; 
+    width: 32px; 
+    height: 48px; 
+    background: red; /* assign a nice red color */
+    border-radius: 50px 50px 0 0; /* make the top edge round */ 
+ left: 0; /* placing the right part properly */
+    -webkit-transform: rotate(45deg); /* rotating 45 degrees clockwise */
+       -moz-transform: rotate(45deg); 
+        -ms-transform: rotate(45deg); 
+         -o-transform: rotate(45deg); 
+            transform: rotate(45deg); 
+    -webkit-transform-origin: 100% 100%; /* rotation is around bottom-right corner this time */
+       -moz-transform-origin: 100% 100%; 
+        -ms-transform-origin: 100% 100%; 
+         -o-transform-origin: 100% 100%; 
+            transform-origin :100% 100%; 
+}
+
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fireball
+{
+0%   {background:red; border: solid 2px yellow;}
+50%  {background:yellow; border:solid 2px red;}
+100%   {background:red; border: solid 2px yellow;}
+}
