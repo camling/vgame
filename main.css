@@ -19,7 +19,16 @@
 .wall{
     background-color:black;
     position:absolute;
-    background-image:url('wallTitle.jpg');
+    linear-gradient(
+      rgba(255, 0, 0, 0.45), 
+      rgba(255, 0, 0, 0.45)
+    );
+    background:
+    linear-gradient(
+      rgba(255, 0, 0, 0.45), 
+      rgba(255, 0, 0, 0.45)
+    ),
+    url(wallTitle.jpg);
 	background-repeat: repeat;
     -webkit-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: -5px 0px 5px 0px rgba(0,0,0,0.75);
@@ -51,22 +60,32 @@
 	left:120px;
 }
 
+h1{
+    color:red;
+    text-align: center;
+    font-size: 3.5em;
+}
+
 .dungeon{
 	width: 600px;
 	height: 600px;
 	background-image:url('floorTitle.jpg');
 	background-repeat: repeat;
+    position: relative;
+    margin: auto;
 	
 }
 body{
 	margin: 0px;
 	padding: 0px;
+    background-color: black;
 }
 
 .gameOver{
 	position: absolute;
 	z-index: 10;
-	width:610px;
+	width:100%;
+    height: 100%;
 	padding-top:300px;
 	padding-bottom:250px;
 	font-weight: bold;
@@ -95,13 +114,14 @@ body{
 	color:blue;
 }
 .heartContainer{
-	position: absolute;
-	left:650px;
+	width:600px;
+    height: 100px;
+    margin: auto;
 }
 
 .heart{
 	position:relative;
-	float:left; 
+	float:right; 
      width:80px; 
      height:60px;
      margin-top:10px; /* leave some space above */

@@ -350,7 +350,7 @@ var aObj = {
     width : 15,
     height : 15,
     left : 10,
-    top : 10,
+    top : 30,
     moveLeft : false,
     moveUp : false,
     moveRight : false,
@@ -416,6 +416,7 @@ var keyObj = {
     top : 50,
     taken : "no"
 }
+
 
 var doorObj = {
     width: 5,

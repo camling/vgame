@@ -5,12 +5,16 @@
     var pause = document.getElementById('pause');
     var play = document.getElementById('play');
     var heartContainer = document.getElementById('heartContainer');
+    var dungeon = document.getElementById("dungeon");
 
     var gameLoop = true;
     var startTime = Date.now();
     var endTime;
 
     var myEnemies = [];
+
+    this.audioTag = document.getElementById("audio");
+    this.collisionAudio = document.getElementById("collisionAudio");
 
     // Use arrayNum for checking the wallArray with "false" wallCheck() in keyCheck.
     var arrayNum;
@@ -26,8 +30,24 @@
         this.createWalls();
         this.lifeHearts();
         this.moveit();
+        this.playSoundtrack();
         
-    }
+    };
+
+    this.playSoundtrack = function()
+  {
+    this.audioTag.src = "sounds/Willow_Tavern.mp3";
+    this.audioTag.play();
+    this.audioTag.volume = 0.2
+   
+  };
+
+  this.playCollision = function()
+  {
+    this.collisionAudio.src = "sounds/bass_deny.mp3";
+    this.collisionAudio.play();
+    this.collisionAudio.volume = 1.0;
+  };
 
     this.createEnemies = function()
     {
@@ -39,16 +59,16 @@
         myEnemies[e].style.left = enemyArray[e].left + "px";
         myEnemies[e].style.height = enemyArray[e].height + "px";
         myEnemies[e].style.width = enemyArray[e].width + "px";
-        document.body.appendChild(myEnemies[e]);
-        };
-    }
+        dungeon.appendChild(myEnemies[e]);
+        }
+    };
 
     this.setStyles = function()
     {
         // Starting out styles
         a.style.width = aObj.width + "px";
         a.style.height = aObj.height + "px";
-    }
+    };
 
     this.createKey = function()
     {
@@ -59,8 +79,8 @@
         key.style.left = keyObj.left + "px";
         key.style.height = keyObj.height + "px";
         key.style.width = keyObj.width + "px";
-        document.body.appendChild(key);
-    }
+        dungeon.appendChild(key);
+    };
 
     this.createDoor = function()
     {
@@ -71,8 +91,8 @@
         door.style.left = doorObj.left + "px";
         door.style.height = doorObj.height + "px";
         door.style.width = doorObj.width + "px";
-        document.body.appendChild(door);
-    }
+        dungeon.appendChild(door);
+    };
     
     this.createWalls = function()
     {
@@ -80,14 +100,15 @@
         {
         var wall = document.createElement('div');
         wall.className = wallArray[i].wallType;
+        wall.style.position = "absolute";
         wall.style.top = wallArray[i].top + "px";
         wall.style.left = wallArray[i].left + "px";
         wall.style.height = wallArray[i].height + "px";
         wall.style.width = wallArray[i].width + "px";
-        document.body.appendChild(wall);    
-        };
+        dungeon.appendChild(wall);    
+        }
 
-    }
+    };
     
 
     this.moveit = function()
@@ -102,7 +123,7 @@
         {
             requestAnimationFrame(moveit);  
         }    
-    }
+    };
     
 
     this.wallCheck = function(arg)
@@ -117,7 +138,7 @@
         };
         
            return true;
-    }
+    };
 
 
 
@@ -224,7 +245,7 @@
         }
          
         
-    }
+    };
 
 
     this.keyboardCheck = function()
@@ -282,7 +303,7 @@
             }
         
         a.style["-webkit-transform"] = "translate("+aObj.left+"px,"+aObj.top+"px)"; 
-    }
+    };
 
     this.enemyCollision = function()
     {
@@ -294,6 +315,7 @@
             {
                 if(aObj.invincible === false)
                 {
+                   this.playCollision();
                    aObj.life = aObj.life - 1;
                    aObj.invincible = true;
                    heartNum = aObj.life - 1;
@@ -314,7 +336,7 @@
         }
      
         
-    }
+    };
 
     this.lifeHearts = function ()
     {
@@ -326,7 +348,7 @@
             heart.id = "heart"+h;
             heartContainer.appendChild(heart);
         };   
-    }
+    };
 
 
     this.gameEnd = function(outcome)
@@ -355,7 +377,7 @@
         }
             
 
-    }
+    };
 
     this.itemCheck = function()
     {
@@ -365,7 +387,7 @@
                 key.style.display = 'none';
                 door.style.display = "none";
             }
-    }
+    };
 
     this.doorOpen = function()
     {
@@ -392,7 +414,7 @@
                gameEnd('win');
             }
         }
-    }
+    };
 
 
     this.pauseGame = function()
@@ -400,20 +422,20 @@
         gameLoop = false;
         endTime = Date.now();
         gameTimer();
-    }
+    };
 
     this.playGame = function()
     {
         gameLoop = true;
         moveit();
-    }
+    };
      
     this.gameTimer = function()
     {
         var myTime = endTime - startTime;
         seconds=(myTime/1000)%60
         alert("You played for " + seconds + "seconds");
-    }
+    };
 
 
 
